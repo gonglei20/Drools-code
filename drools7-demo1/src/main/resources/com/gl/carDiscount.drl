@@ -1,0 +1,35 @@
+package com.gl;
+
+import com.gl.entity.*
+
+/** 需求：
+*   汽车打折，根据购买人年龄
+*/
+
+rule "carDiscount for than 60"
+agenda-group "carDiscount"
+    when
+     $car :  Car(people.age>=60)
+    then
+    $car.setDiscount(80);
+    System.out.println("60岁上打八折");
+end
+
+rule "carDiscount for less 60"
+agenda-group "carDiscount"
+    when
+     $car :  Car(people.age<60)
+    then
+    $car.setDiscount(90);
+    System.out.println("60岁上打9折");
+end
+
+rule "carDiscount for less 601"
+agenda-group "carDiscount1"
+    when
+     $car :  Car(people.age<60)
+    then
+    $car.setDiscount(90);
+    System.out.println("我不能进去");
+    System.out.println("60岁上打9折");
+end

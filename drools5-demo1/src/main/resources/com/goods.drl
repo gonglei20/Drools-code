@@ -1,0 +1,10 @@
+package com.gl
+import com.gl.entity.Goods
+
+rule "Drools5Test"
+    when
+       goods : Goods(discount==100);
+    then
+        goods.setDiscount(50);
+        System.out.println("fire discout");
+end
